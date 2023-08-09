@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.melvin.contacts.home.domain.Contact
+import com.melvin.contacts.core.domain.Contact
 
 @Composable
 fun ContactRow(

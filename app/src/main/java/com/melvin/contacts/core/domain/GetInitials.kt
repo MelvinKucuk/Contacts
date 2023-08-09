@@ -1,4 +1,4 @@
-package com.melvin.contacts.home.domain
+package com.melvin.contacts.core.domain
 
 fun getInitials(name: String?): String {
     if (name.isNullOrEmpty()) return ""
