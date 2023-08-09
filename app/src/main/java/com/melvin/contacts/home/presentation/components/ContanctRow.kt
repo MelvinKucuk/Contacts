@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +32,7 @@ fun ContactRow(
             .height(46.dp)
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
+            .clip(CardDefaults.elevatedShape)
             .clickable {
                 onClick("")
             },
@@ -64,17 +66,17 @@ fun ContactRow(
 fun ContactRowPreview() {
     ContactRow(
         Contact(
-            "Melvin",
-            "Kucuk",
-            "Right Balance",
-            "Fake Street 123",
-            "Fake Street 123",
-            "Argentina",
-            "Buenos Aires",
-            "1333",
-            "11432343",
-            "112345678",
-            "mkucuk@gmail.com",
+            firstName = "Melvin",
+            lastName = "Kucuk",
+            companyName = "Right Balance",
+            address = "Fake Street 123",
+            city = "Fake Street 123",
+            country = "Argentina",
+            state = "Buenos Aires",
+            zip = "1333",
+            phone = "11432343",
+            phone1 = "112345678",
+            email = "mkucuk@gmail.com",
         )
     ) {}
 }
