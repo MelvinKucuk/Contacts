@@ -1,7 +1,12 @@
-package com.melvin.contacts.core.domain
+package com.melvin.contacts.core.data
 
-data class Contact(
-    val key: String = "",
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
+data class ContactEntity(
+    @PrimaryKey
+    val key: String,
     val firstName: String,
     val lastName: String,
     val companyName: String,
@@ -13,7 +18,4 @@ data class Contact(
     val phone: String,
     val phone1: String,
     val email: String,
-) {
-    val fullName get() = "$firstName $lastName"
-    val initials get() = getInitials(fullName)
-}
+)

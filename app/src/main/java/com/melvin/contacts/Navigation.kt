@@ -16,7 +16,7 @@ fun Navigation(
         composable(Routes.HomeScreen.route) {
             val viewModel: HomeViewModel = hiltViewModel()
 
-            HomeScreen()
+            HomeScreen(viewModel.state)
         }
     }
 }
