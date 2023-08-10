@@ -31,7 +31,7 @@ fun ContactRow(
         modifier = modifier
             .height(46.dp)
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 24.dp)
             .clip(CardDefaults.elevatedShape)
             .clickable {
                 onClick(contact.key)
