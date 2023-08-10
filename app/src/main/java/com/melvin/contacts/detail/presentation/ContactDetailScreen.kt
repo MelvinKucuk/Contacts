@@ -3,6 +3,7 @@ package com.melvin.contacts.detail.presentation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,86 +26,66 @@ fun ContactDetailScreen(
 ) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
-            modifier = Modifier.verticalScroll(rememberScrollState()),
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Start
         ) {
+            Text(text = stringResource(R.string.first_name))
             TextField(
                 value = state.firstNameText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.first_name))
-                }
             )
+            Text(text = stringResource(R.string.last_name))
             TextField(
                 value = state.lastNameText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.last_name))
-                }
             )
+            Text(text = stringResource(R.string.company_name))
             TextField(
                 value = state.companyNameText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.company_name))
-                }
             )
+            Text(text = stringResource(R.string.address))
             TextField(
                 value = state.addressText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.address))
-                }
             )
+            Text(text = stringResource(R.string.city))
             TextField(
                 value = state.cityText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.city))
-                }
             )
+            Text(text = stringResource(R.string.county))
             TextField(
                 value = state.countyText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.county))
-                }
             )
+            Text(text = stringResource(R.string.state))
             TextField(
                 value = state.stateText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.state))
-                }
             )
+            Text(text = stringResource(R.string.zip))
             TextField(
                 value = state.zipText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.zip))
-                }
             )
+            Text(text = stringResource(R.string.phone))
             TextField(
                 value = state.phoneText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.phone))
-                }
             )
+            Text(text = stringResource(R.string.alt_phone))
             TextField(
                 value = state.phone1Text,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.alt_phone))
-                }
             )
+            Text(text = stringResource(R.string.email))
             TextField(
                 value = state.emailText,
                 onValueChange = {},
-                placeholder = {
-                    Text(text = stringResource(R.string.email))
-                }
             )
         }
     }
