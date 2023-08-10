@@ -73,6 +73,9 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.46.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    // CVS Reader
+    implementation("org.apache.commons:commons-csv:1.5")
+
     // Unit test
     testImplementation("junit:junit:4.13.2")
 
