@@ -12,4 +12,7 @@ interface ContactsDao {
 
     @Query("SELECT * FROM ContactEntity")
     fun getAllContacts(): Flow<List<ContactEntity>>
+
+    @Query("SELECT * FROM ContactEntity WHERE `key` = :key")
+    suspend fun getContactByKey(key: String): ContactEntity
 }

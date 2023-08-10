@@ -10,10 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.melvin.contacts.home.presentation.components.ContactRow
+import com.melvin.contacts.home.presentation.viewmodel.HomeEvent
+import com.melvin.contacts.home.presentation.viewmodel.HomeState
 
 @Composable
 fun HomeScreen(
-    state: HomeState
+    state: HomeState,
+    onEvent: (HomeEvent) -> Unit
 ) {
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -24,7 +27,7 @@ fun HomeScreen(
         ) {
             items(state.contacts) { contact ->
                 ContactRow(contact = contact) {
-
+                    onEvent(HomeEvent.ContactClicked(it))
                 }
             }
         }

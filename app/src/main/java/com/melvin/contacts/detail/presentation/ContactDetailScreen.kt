@@ -16,10 +16,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.melvin.contacts.R
+import com.melvin.contacts.detail.presentation.viewmodel.ContactDetailState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ContactDetailScreen() {
+fun ContactDetailScreen(
+    state: ContactDetailState
+) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier.verticalScroll(rememberScrollState()),
@@ -27,77 +30,77 @@ fun ContactDetailScreen() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextField(
-                value = "Name",
+                value = state.firstNameText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.first_name))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.lastNameText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.last_name))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.companyNameText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.company_name))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.addressText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.address))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.cityText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.city))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.countyText,
                 onValueChange = {},
                 placeholder = {
-                    Text(text = stringResource(R.string.country))
+                    Text(text = stringResource(R.string.county))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.stateText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.state))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.zipText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.zip))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.phoneText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.phone))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.phone1Text,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.alt_phone))
                 }
             )
             TextField(
-                value = "Name",
+                value = state.emailText,
                 onValueChange = {},
                 placeholder = {
                     Text(text = stringResource(R.string.email))
@@ -110,5 +113,5 @@ fun ContactDetailScreen() {
 @Preview
 @Composable
 fun ContactDetailScreenPreview() {
-    ContactDetailScreen()
+    ContactDetailScreen(ContactDetailState())
 }

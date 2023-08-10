@@ -34,7 +34,7 @@ fun ContactRow(
             .padding(horizontal = 16.dp)
             .clip(CardDefaults.elevatedShape)
             .clickable {
-                onClick("")
+                onClick(contact.key)
             },
         shape = CardDefaults.elevatedShape,
         colors = CardDefaults.cardColors(
@@ -71,7 +71,7 @@ fun ContactRowPreview() {
             companyName = "Right Balance",
             address = "Fake Street 123",
             city = "Fake Street 123",
-            country = "Argentina",
+            county = "Argentina",
             state = "Buenos Aires",
             zip = "1333",
             phone = "11432343",

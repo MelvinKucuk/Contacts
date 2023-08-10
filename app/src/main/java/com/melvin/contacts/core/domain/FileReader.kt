@@ -34,7 +34,7 @@ class FileReader @Inject constructor(
                                 companyName = safeRecord[2],
                                 address = safeRecord[3],
                                 city = safeRecord[4],
-                                country = safeRecord[5],
+                                county = safeRecord[5],
                                 state = safeRecord[6],
                                 zip = safeRecord[7],
                                 phone = safeRecord[8],

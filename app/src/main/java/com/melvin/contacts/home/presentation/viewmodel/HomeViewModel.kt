@@ -1,4 +1,4 @@
-package com.melvin.contacts.home.presentation
+package com.melvin.contacts.home.presentation.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,6 +27,18 @@ class HomeViewModel @Inject constructor(
             fileReader.readFileAndCreateDB()
             contactsRepository.getAllContacts().distinctUntilChanged().collectLatest {
                 state = state.copy(contacts = it)
+            }
+        }
+    }
+
+    fun onEvent(event: HomeEvent) {
+        state = when (event) {
+            is HomeEvent.ContactClicked -> {
+                state.copy(navigateToDetail = event.contactKey)
+            }
+
+            HomeEvent.DetailNavigated -> {
+                state.copy(navigateToDetail = null)
             }
         }
     }

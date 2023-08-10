@@ -7,7 +7,7 @@ data class Contact(
     val companyName: String,
     val address: String,
     val city: String,
-    val country: String,
+    val county: String,
     val state: String,
     val zip: String,
     val phone: String,

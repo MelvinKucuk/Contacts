@@ -23,4 +23,8 @@ class ContactsRepositoryImpl @Inject constructor(
         return contactsDao.getAllContacts()
             .map { list -> list.map { it.toDomain() } }
     }
+
+    override suspend fun getContactByKey(key: String): Contact {
+        return contactsDao.getContactByKey(key).toDomain()
+    }
 }
