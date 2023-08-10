@@ -25,26 +25,26 @@ class FileReader @Inject constructor(
         )
 
         coroutineScope {
-                csvReader.drop(1).map { record ->
-                    launch {
-                        record?.let { safeRecord ->
-                            val contact = Contact(
-                                firstName = safeRecord[0],
-                                lastName = safeRecord[1],
-                                companyName = safeRecord[2],
-                                address = safeRecord[3],
-                                city = safeRecord[4],
-                                county = safeRecord[5],
-                                state = safeRecord[6],
-                                zip = safeRecord[7],
-                                phone = safeRecord[8],
-                                phone1 = safeRecord[9],
-                                email = safeRecord[10],
-                            )
-                            contactsRepository.insertContact(contact)
-                        }
+            csvReader.drop(1).map { record ->
+                launch {
+                    record?.let { safeRecord ->
+                        val contact = Contact(
+                            firstName = safeRecord[0],
+                            lastName = safeRecord[1],
+                            companyName = safeRecord[2],
+                            address = safeRecord[3],
+                            city = safeRecord[4],
+                            county = safeRecord[5],
+                            state = safeRecord[6],
+                            zip = safeRecord[7],
+                            phone = safeRecord[8],
+                            phone1 = safeRecord[9],
+                            email = safeRecord[10],
+                        )
+                        contactsRepository.insertContact(contact)
                     }
-                }.map { it.join() }
+                }
+            }.map { it.join() }
         }
     }
 
