@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.contacts.Routes
+import com.melvin.contacts.core.domain.Contact
 import com.melvin.contacts.core.domain.ContactsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -38,7 +39,104 @@ class ContactDetailViewModel @Inject constructor(
                     phoneText = contact.phone,
                     phone1Text = contact.phone1,
                     emailText = contact.email,
+                    contactKey = safeContactKey
                 )
+            }
+        }
+    }
+
+    fun onEvent(event: ContactDetailEvent) {
+        state = when (event) {
+            is ContactDetailEvent.AddressTextChanged -> {
+                state.copy(
+                    addressText = event.text
+                )
+            }
+
+            is ContactDetailEvent.CityTextChanged -> {
+                state.copy(
+                    cityText = event.text
+                )
+            }
+
+            is ContactDetailEvent.CompanyNameTextChanged -> {
+                state.copy(
+                    companyNameText = event.text
+                )
+            }
+
+            is ContactDetailEvent.CountyTextChanged -> {
+                state.copy(
+                    countyText = event.text
+                )
+            }
+
+            is ContactDetailEvent.EmailTextChanged -> {
+                state.copy(
+                    emailText = event.text
+                )
+            }
+
+            is ContactDetailEvent.FirstNameTextChanged -> {
+                state.copy(
+                    firstNameText = event.text
+                )
+            }
+
+            is ContactDetailEvent.LastNameTextChanged -> {
+                state.copy(
+                    lastNameText = event.text
+                )
+            }
+
+            is ContactDetailEvent.Phone1TextChanged -> {
+                state.copy(
+                    phone1Text = event.text
+                )
+            }
+
+            is ContactDetailEvent.PhoneTextChanged -> {
+                state.copy(
+                    phoneText = event.text
+                )
+            }
+
+            is ContactDetailEvent.StateTextChanged -> {
+                state.copy(
+                    stateText = event.text
+                )
+            }
+
+            is ContactDetailEvent.ZipTextChanged -> {
+                state.copy(
+                    zipText = event.text
+                )
+            }
+
+            ContactDetailEvent.SaveButtonClicked -> {
+                viewModelScope.launch {
+                    val updatedContact =
+                        Contact(
+                            firstName = state.firstNameText,
+                            lastName = state.lastNameText,
+                            companyName = state.companyNameText,
+                            address = state.addressText,
+                            city = state.cityText,
+                            county = state.countyText,
+                            state = state.stateText,
+                            zip = state.zipText,
+                            phone = state.phoneText,
+                            phone1 = state.phone1Text,
+                            email = state.emailText,
+                            key = state.contactKey,
+                        )
+                    contactsRepository.updateContact(updatedContact)
+                }
+                state.copy(navigateBack = true)
+            }
+
+            ContactDetailEvent.BackNavigated -> {
+                state.copy(navigateBack = null)
             }
         }
     }

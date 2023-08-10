@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.melvin.contacts.detail.presentation.ContactDetailScreen
+import com.melvin.contacts.detail.presentation.viewmodel.ContactDetailEvent
 import com.melvin.contacts.detail.presentation.viewmodel.ContactDetailViewModel
 import com.melvin.contacts.home.presentation.HomeScreen
 import com.melvin.contacts.home.presentation.viewmodel.HomeEvent
@@ -42,7 +43,14 @@ fun Navigation(
         ) {
             val viewModel: ContactDetailViewModel = hiltViewModel()
 
-            ContactDetailScreen(viewModel.state)
+            LaunchedEffect(viewModel.state.navigateBack) {
+                if (viewModel.state.navigateBack  == true) {
+                    navController.popBackStack()
+                    viewModel.onEvent(ContactDetailEvent.BackNavigated)
+                }
+            }
+
+            ContactDetailScreen(viewModel.state, viewModel::onEvent)
         }
     }
 }

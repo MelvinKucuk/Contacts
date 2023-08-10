@@ -12,4 +12,6 @@ data class ContactDetailState(
     val phoneText: String = "",
     val phone1Text: String = "",
     val emailText: String = "",
+    val contactKey: String = "",
+    val navigateBack: Boolean? = null
 )
